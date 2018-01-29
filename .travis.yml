@@ -12,17 +12,12 @@ cache:
 
 env: TMPDIR=/tmp
 
-services:
-    - memcached
-
 install:
     - phpenv config-rm xdebug.ini || true
     - travis_retry composer install --no-interaction --prefer-dist
 
     - mysql -e 'create database zftest;'
     - psql -c 'create database zftest;' -U postgres
-
-    - no | pecl install memcache
 
     - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
 
