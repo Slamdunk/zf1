@@ -6,6 +6,10 @@ php:
     - 7.1
     - 7.2
 
+cache:
+    directories:
+        - $HOME/.composer/cache
+
 env: TMPDIR=/tmp
 
 services:
@@ -18,7 +22,7 @@ install:
     - mysql -e 'create database zftest;'
     - psql -c 'create database zftest;' -U postgres
 
-    - yes | pecl install memcache
+    - no | pecl install memcache
 
     - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
 
