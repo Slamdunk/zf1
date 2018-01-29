@@ -18,7 +18,7 @@ install:
     - mysql -e 'create database zftest;'
     - psql -c 'create database zftest;' -U postgres
 
-    - pecl install memcache
+    - yes | pecl install memcache
 
     - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
 
